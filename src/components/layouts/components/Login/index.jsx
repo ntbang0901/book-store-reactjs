@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as actions from "../../../../actions";
 
 //CSS
@@ -98,24 +98,24 @@ function Login() {
               ""
             )}
           </div>
-          <h3>sign in</h3>
-          <span>username</span>
+          <h3>Đăng nhập</h3>
+          <span>Tài khoản</span>
           <input
             type="text"
             name="username"
             value={username}
             className="box"
             onChange={(e) => handleOnchange(e)}
-            placeholder="enter your email"
+            placeholder="tài khoản"
           />
-          <span>password</span>
+          <span>Mật khẩu</span>
           <input
             type="password"
             name="pwd"
             value={pwd}
             className="box"
             onChange={(e) => handleOnchange(e)}
-            placeholder="enter your password"
+            placeholder="Mật khẩu"
           />
           <button
             type="submit"
@@ -124,13 +124,13 @@ function Login() {
             className={`btn-default-bookstore ${
               checkEmpty() ? "disabled" : ""
             }`}>
-            {isFetching ? <Spinner animation="border" /> : "Sign in"}
+            {isFetching ? <Spinner animation="border" /> : "Đăng nhập"}
           </button>
           <p>
-            forget password ? <a href="#">click here</a>
+            <a href="#">Quên mật khẩu</a>
           </p>
           <p>
-            don't have an account ? <a href="#">create one</a>
+            <Link to="/register">Tạo tài khoản</Link>
           </p>
         </form>
       )}

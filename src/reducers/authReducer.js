@@ -26,7 +26,6 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case actionsTypes.LOGIN_FAILED:
-      console.log(action);
       return {
         ...state,
         error: true,
@@ -48,7 +47,6 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case actionsTypes.UPDATE_TOKEN:
-      console.log(action);
       return {
         ...state,
         token: action.data.token,
@@ -57,6 +55,7 @@ export const authReducer = (state = initialState, action) => {
 
     case actionsTypes.LOGOUT_SUCCESS:
       localStorage.removeItem("persist:user");
+      localStorage.removeItem("persist:cart");
       return {
         ...initialState,
       };

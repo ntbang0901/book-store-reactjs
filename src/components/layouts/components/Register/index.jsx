@@ -168,7 +168,6 @@ function Register() {
     const regexEmail =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    console.log(sdt.match(regexsdt));
     if (
       ho === "" ||
       ten === "" ||
@@ -198,7 +197,6 @@ function Register() {
     return false;
   };
 
-  console.log(values);
   return (
     <div className="register-page">
       {/* <div className="container">

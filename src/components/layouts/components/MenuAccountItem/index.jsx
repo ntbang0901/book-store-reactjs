@@ -11,8 +11,6 @@ function MenuAccount({ children }) {
   const currentUser = useSelector((state) => state.auth.currentUser);
 
   const handleLogout = () => {
-    console.log(currentUser);
-
     dispatch(actions.Logout(currentUser));
   };
 

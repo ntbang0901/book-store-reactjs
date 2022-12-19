@@ -26,6 +26,7 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [...payload],
+        numberCart: cart.length,
       };
 
     case actionsTypes.DELETE_CART:

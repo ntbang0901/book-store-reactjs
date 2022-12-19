@@ -178,8 +178,8 @@ function Payment() {
                   {totalPrice()} Đ
                 </div>
                 <div className="checkout">
-                  <div class="FXKjae">
-                    <div class="gLbpKW">
+                  <div className="FXKjae">
+                    <div className="gLbpKW">
                       Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo{" "}
                       <a
                         href="https://help.shopee.vn/portal/article/77242"

@@ -10,11 +10,12 @@ function ItemSearch({ data, setShowResult }) {
       <div className="info">
         <p className="name">{data.ten}</p>
         <span className="price">
+          giá:{" "}
           {data.giasanpham.length > 0
             ? data.giasanpham[data.giasanpham.length - 1].gia + "Đ"
             : "liên hệ"}
+          <span>{data.sach ? "sách" : "văn phòng phẩm"}</span>
         </span>
-        <span>{data.sach ? "sách" : "văn phòng phẩm"}</span>
       </div>
     </Link>
   );

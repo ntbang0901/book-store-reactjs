@@ -1,5 +1,9 @@
 .search-result {
   width: 55rem;
+  .price {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .header .header-1 .search-form input {

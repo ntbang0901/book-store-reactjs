@@ -26,7 +26,6 @@ function VPP() {
     setLoading(true);
     FecthData();
   }, []);
-  console.log(vpps);
 
   return (
     <>

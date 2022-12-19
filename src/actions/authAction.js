@@ -6,18 +6,13 @@ export const LoginStart = (user, history) => {
     try {
       if (navigator.onLine) {
         let res = await authLogin(user);
-        console.log("LoginStart", res);
-        console.log("res?.data?.errCode === 0", res?.data?.errCode === 0);
         if (res?.data?.errCode === 0) {
-          console.log(123);
           history.push("/");
           return dispatch({
             type: actionsTypes.LOGIN_SUSSESS,
             data: res?.data?.data,
           });
         } else {
-          console.log(234);
-
           return dispatch({
             type: actionsTypes.LOGIN_FAILED,
             data: res?.data,
@@ -67,10 +62,8 @@ export const loginSuccess = (data) => {
 export const Logout = (user) => {
   return async (dispatch, getState) => {
     try {
-      console.log(user, "1");
       if (navigator.onLine) {
         let res = await authLogout(user);
-        console.log(res);
         if (res?.data?.errCode === 0) {
           dispatch({
             type: actionsTypes.LOGOUT_SUCCESS,

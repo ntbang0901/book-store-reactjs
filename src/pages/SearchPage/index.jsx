@@ -20,7 +20,6 @@ function SearchPage() {
   let query = useQuery();
 
   const value = query.get("q");
-  console.log(value);
 
   useEffect(() => {
     if (query === null) return;

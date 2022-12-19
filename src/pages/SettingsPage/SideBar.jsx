@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 function SideBar({ routes }) {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  console.log(currentUser);
   return (
     <div className="sidebar-nav" style={{ padding: "10px" }}>
       <div className="sidebar-nav-avatar">

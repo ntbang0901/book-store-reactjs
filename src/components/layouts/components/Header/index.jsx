@@ -14,6 +14,7 @@ import Menu from "../Menu";
 
 function Header({ handleShowFormLogin }) {
   const numberCart = useSelector((state) => state.carts.numberCart);
+
   const dispatch = useDispatch();
   useEffect(() => {}, [dispatch]);
 
@@ -75,7 +76,7 @@ function Header({ handleShowFormLogin }) {
                 className=""
                 src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1xEeTdBGw3KVjSZFDXXXWEpXa-75-66.png"
               />
-              <span className="numbercart">{numberCart ? numberCart : 0}</span>
+              <span className="numbercart">{numberCart}</span>
             </Link>
 
             {/* <Link

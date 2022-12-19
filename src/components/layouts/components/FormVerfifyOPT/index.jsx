@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as actions from "../../../../actions";
-import { verifyOTP } from "../../../../services/userService";
+import { createOtp, verifyOTP } from "../../../../services/userService";
 import "./FormVerfifyOPT.scss";
 
 function FormVerfifyOPT({
@@ -19,6 +19,7 @@ function FormVerfifyOPT({
 
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -48,7 +49,6 @@ function FormVerfifyOPT({
   const handleVerifyOTP = async () => {
     try {
       let res = await verifyOTP(user.email, text);
-      console.log(res);
       if (res.data.code === 200) {
         await dispatch(
           actions.LoginStart(
@@ -64,8 +64,15 @@ function FormVerfifyOPT({
     }
   };
 
-  const handleResend = () => {
-    setMinutes(2);
+  const handleResend = async () => {
+    try {
+      setLoading(true);
+      let res = await createOtp(user.email);
+      if (res.data.message === "ok") {
+        setMinutes(2);
+        setLoading(false);
+      }
+    } catch (error) {}
   };
 
   return (
@@ -117,8 +124,11 @@ function FormVerfifyOPT({
                   {" "}
                   {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </h2>
-                <button className="btn-resend" onClick={() => handleResend()}>
-                  Resend
+                <button
+                  className="btn-resend"
+                  disabled={loading}
+                  onClick={() => handleResend()}>
+                  {loading ? <Spinner animation="border" /> : "Gửi lại OTP"}
                 </button>
               </div>
             </div>

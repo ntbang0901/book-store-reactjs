@@ -15,7 +15,6 @@ function BookDetail() {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  console.log(productsDetail);
   useEffect(() => {
     dispatch(actions.fetchProductDetailStart(id));
 

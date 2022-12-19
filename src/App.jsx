@@ -14,6 +14,7 @@ import { instance } from "./utils/request";
 import { useDispatch } from "react-redux";
 import * as actions from "./actions";
 import { getRefreshToken } from "./services/authService";
+import { Spinner } from "react-bootstrap";
 
 const ComponentRoute = lazy(() => {
   return import("./routes/ComponentRoute");
@@ -24,7 +25,9 @@ function App() {
     <Router>
       <Suspense
         fallback={
-          <div className="text-primary text-center display-1">Loading....</div>
+          <div className="text-primary text-center display-1">
+            <Spinner animation="border"></Spinner>
+          </div>
         }>
         <ScrollToTop />
         <div className="App">{<ComponentRoute />}</div>

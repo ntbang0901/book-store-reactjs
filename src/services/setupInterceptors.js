@@ -26,7 +26,6 @@ const setup = (store) => {
   // xử lý data sau khi response từ server
 
   const { dispatch, getState } = store;
-  console.log("store", store);
 
   instance.interceptors.response.use(
     async (response) => {
@@ -48,7 +47,6 @@ const setup = (store) => {
           const {
             data: { data },
           } = await getRefreshToken(refreshToken);
-          console.log(data);
           if (data.token) {
             config.headers["X-Token"] = data.token;
             await dispatch(actions.loginSuccess(data));

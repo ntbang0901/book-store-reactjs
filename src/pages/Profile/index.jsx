@@ -7,7 +7,6 @@ function Profile() {
   const localtion = useLocation();
   const history = useHistory();
 
-  console.log(localtion);
   useEffect(() => {
     if (localtion.pathname === "/account") {
       history.push("/account/profile");

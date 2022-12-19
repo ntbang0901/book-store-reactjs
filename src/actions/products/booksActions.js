@@ -10,7 +10,6 @@ export const fetchProductStart = (id, ten, page, elementOfPage, options) => {
   return async (dispatch, getState) => {
     try {
       let res = await getProductsApi(id, ten, page, elementOfPage, options);
-      console.log(res);
       if (res && res?.data?.error === 0) {
         dispatch({
           type: actionsTypes.FETCH_PRODUCTS_SUCCESS,
@@ -55,7 +54,6 @@ export const fetchProducSearchStart = (value, page, options) => {
   return async (dispatch, getState) => {
     try {
       let res = await getProductsApi(null, value, page, null, options);
-      console.log(res);
       if (res && res.data.error === 0 && res.data.data.length > 0) {
         dispatch({
           type:

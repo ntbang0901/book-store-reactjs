@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { getUserByUsername } from "../../services/userService";
 
 function MyProfile({ user, loading }) {
-  console.log(user);
   return (
     <div className="my-profile">
       {loading === false ? (

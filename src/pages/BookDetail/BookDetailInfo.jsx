@@ -16,6 +16,9 @@ function BookDetailInfo({ productsDetail, quantity, setQuantity }) {
   const addToCart = () => {
     if (isLogin) {
       dispatch(actions.AddCart(productsDetail, quantity));
+      setTimeout(() => {
+        dispatch(actions.getCartItemStart());
+      }, 100);
     } else {
       histoty.push("/login");
     }

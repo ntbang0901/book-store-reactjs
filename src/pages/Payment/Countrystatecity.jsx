@@ -57,7 +57,6 @@ function Countrystatecity({ user, FecthData }) {
   // }, [stateid]);
 
   const handleSubmit = async () => {
-    console.log(address);
     if (address === "") {
       return;
     }

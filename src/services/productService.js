@@ -5,7 +5,6 @@ export const getProducts = () => {
 };
 
 export const getProductsApi = (id, ten, page, elementOfPage, options = {}) => {
-  console.log();
   return publicApi.get(`product/getProduct`, {
     params: { id, ten, page, elementOfPage, options },
   });

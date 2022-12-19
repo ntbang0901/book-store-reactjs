@@ -7,8 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ProductItem from "../../../ProductItem";
 
 function ListSlider({ products }) {
-  console.log("productList", products);
-
   return (
     <div className="swiper books-slider">
       <div className="swiper-wrapper">
