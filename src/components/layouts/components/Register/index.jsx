@@ -137,15 +137,15 @@ function Register() {
         setLoading(false);
         setIsShowFromVerify(true);
       }
-      if (res.date.code === 1) {
+      if (res.data.error === 1) {
         setLoading(false);
         setMessage("username đã tồn tại");
       }
-      if (res.date.code === 2) {
+      if (res.data.error === 2) {
         setLoading(false);
         setMessage("email đã tồn tại");
       }
-      if (res.date.code === 3) {
+      if (res.data.error === 3) {
         setLoading(false);
         setMessage("Số điện thoại đã tồn tại");
       }
@@ -215,28 +215,35 @@ function Register() {
       {/* <div className="container">
         <RegisterForm />
       </div> */}
+
       {isshowFormVerify ? (
         <FormVerfifyOPT user={values} initialMinute={2} />
       ) : (
-        <div className="register-form">
-          <span className="text-danger">{message}</span>
-          <form onSubmit={handleSubmit}>
-            {inputs.map((input) => (
-              <FormInput
-                key={input.id + input.name}
-                {...input}
-                value={values[input.name]}
-                onChange={onChange}
-              />
-            ))}
-            <button
-              className={"btn-register " + (checkValue() ? "disabled" : "")}
-              type="submit"
-              disabled={checkValue() || loading}
-              onClick={(e) => handleSubmit(e)}>
-              <div>{loading ? <Spinner animation="border" /> : "Đăng ký"}</div>
-            </button>
-          </form>
+        <div>
+          <span className="message-error">{message}</span>
+
+          <div className="register-form">
+            <form onSubmit={handleSubmit}>
+              {inputs.map((input) => (
+                <FormInput
+                  key={input.id + input.name}
+                  {...input}
+                  value={values[input.name]}
+                  onChange={onChange}
+                />
+              ))}
+
+              <button
+                className={"btn-register " + (checkValue() ? "disabled" : "")}
+                type="submit"
+                disabled={checkValue() || loading}
+                onClick={(e) => handleSubmit(e)}>
+                <div>
+                  {loading ? <Spinner animation="border" /> : "Đăng ký"}
+                </div>
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </div>

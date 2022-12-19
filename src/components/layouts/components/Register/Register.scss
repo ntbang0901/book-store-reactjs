@@ -3,9 +3,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  .message-error {
+    margin-left: 30px;
+    font-size: 16px;
+    color: red !important;
+  }
   .register-form {
     font-size: 16px;
     padding: 20px;
+
     .form-group {
       margin-top: 10px;
       input {
