@@ -1,0 +1,20 @@
+.register-page {
+  margin-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .register-form {
+    font-size: 16px;
+    padding: 20px;
+    .form-group {
+      margin-top: 10px;
+      input {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+  }
+  .disabled {
+    opacity: 0.4;
+  }
+}

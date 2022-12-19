@@ -1,0 +1,12 @@
+.login-form-container {
+  margin-top: 100px;
+
+  .disabled {
+    opacity: 0.4;
+    cursor: text !important;
+    text-decoration: None !important;
+    :hover {
+      background: none !important;
+    }
+  }
+}

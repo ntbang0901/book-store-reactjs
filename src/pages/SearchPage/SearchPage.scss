@@ -1,0 +1,84 @@
+.search-page {
+  .feature-list-item {
+    gap: 30px !important;
+  }
+  margin-top: 80px;
+  background-color: #f0f0f0;
+
+  .centent-left {
+    padding: 12px;
+    background: var(--white);
+    margin-bottom: 10px;
+  }
+  .centent-right {
+    padding: 12px;
+    background: var(--white);
+    margin-bottom: 10px;
+  }
+}
+
+.see-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn-see-more {
+    color: var(--green);
+    cursor: pointer;
+    border: 1px solid;
+    padding: 8px 10px;
+    font-size: 16px;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--green);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.filter-result-search {
+  .filter-with-price {
+    .input-price {
+      font-size: 14px;
+      input {
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 3px;
+        height: 35px;
+        width: 91px;
+        padding: 0 5px;
+        border: 1px solid #ebebeb;
+      }
+    }
+  }
+
+  .filter-with-language {
+    .checkbox-language {
+      display: flex;
+      align-items: a-start;
+      flex-direction: column;
+
+      label {
+        font-size: 14px;
+        display: flex;
+        padding: 3px 0;
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.feature-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.center-justify {
+  display: flex;
+  justify-content: center;
+}

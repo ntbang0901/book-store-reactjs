@@ -1,0 +1,97 @@
+.profile-sidebar {
+  .sidebar-nav {
+    height: 60vh;
+
+    background-color: #fff;
+    margin-top: 10px;
+    font-size: 16px;
+
+    .sidebar-nav-avatar {
+      .profile {
+        margin-bottom: 20px;
+        .avatar-image {
+          width: 50px;
+          height: 50px;
+          border-radius: 999px;
+          margin-right: 20px;
+        }
+
+        .name {
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .sidebar-nav-item {
+      margin-bottom: 6px;
+    }
+    .sidebar-nav-item_title {
+      color: #000;
+
+      &.is-active {
+        color: orange !important;
+      }
+    }
+  }
+
+  .content-sidebar {
+    height: 60vh;
+
+    margin-top: 10px;
+    background: #fff;
+
+    .form-my-profile {
+      font-size: 12px;
+      .form-control-plaintext {
+        text-transform: none;
+      }
+
+      .row {
+        align-items: center;
+      }
+      .form-group {
+        margin-top: 20px;
+      }
+
+      .form-control {
+        width: 80%;
+        padding: 8px;
+      }
+      .title-form {
+        text-align: right;
+        span {
+          width: 20%;
+        }
+      }
+
+      .btn-save-myprofile {
+        margin-top: 10px;
+        background-color: orange;
+        padding: 8px 20px;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #fff;
+        text-transform: capitalize;
+      }
+      .form-change-image {
+        border-left: 1px solid rgba(0, 0, 0, 0.09);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title-image {
+          width: 200px;
+          img {
+            width: 100%;
+          }
+        }
+
+        .lable-btn-change {
+          padding: 8px 16px;
+          border: 1px solid rgba(0, 0, 0, 0.09);
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

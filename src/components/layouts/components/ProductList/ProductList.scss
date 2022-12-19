@@ -1,0 +1,52 @@
+@media (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    /* margin-left: 0px !important; */
+    /* margin-right: 0px !important; */
+  }
+}
+
+.content {
+  text-align: left;
+  &__title {
+    & h3 {
+      display: inline-block;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+    }
+  }
+
+  &__price {
+    text-align: left;
+    font-size: 14px;
+    & .special-price {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      color: #c92127;
+
+      .percent-sale {
+        -webkit-border-radius: 4px;
+        background-color: #c92127;
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0px;
+      }
+    }
+
+    & .old-price {
+      color: #888888;
+      text-decoration: line-through;
+    }
+  }
+}

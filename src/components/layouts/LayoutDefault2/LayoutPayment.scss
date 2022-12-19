@@ -1,0 +1,26 @@
+.header-payment {
+  height: 90px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  .logo {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--black);
+    i {
+      color: var(--green);
+    }
+  }
+}
+
+.header {
+  background-color: var(--white);
+  .header-title {
+    margin-left: 10px;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+}
+.warpper {
+  background: #f0f0f0;
+}

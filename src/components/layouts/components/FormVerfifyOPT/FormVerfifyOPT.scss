@@ -1,0 +1,73 @@
+.form-opt {
+  width: 450px;
+  height: 450px;
+  background-color: #fff;
+
+  .content {
+    font-size: 12px;
+    position: relative;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s;
+
+    .btn-goback {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      :hover {
+        transition: 0.5s;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    text-transform: none;
+    margin-bottom: 10px;
+  }
+
+  .form-input-otp {
+    margin-top: 20px;
+
+    .input-form {
+    }
+    input {
+      font-size: 16px;
+      outline: none;
+    }
+
+    .count-down {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .btn-resend {
+        position: absolute;
+        right: 50%;
+        background: none;
+        font-size: 14px;
+        color: blue !important;
+      }
+    }
+
+    .btn-send-opt {
+      position: absolute;
+      bottom: 15%;
+      background: orangered;
+      padding: 8px 40px;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 12px;
+      :hover {
+        transform: scale(1.1);
+        box-shadow: 5px 4px 18px rgba($color: #000000, $alpha: 0.1);
+      }
+    }
+  }
+}

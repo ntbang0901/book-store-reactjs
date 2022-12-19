@@ -1,0 +1,46 @@
+import routesConfig from "../config/routes";
+
+import HomePage from "../pages/HomePage";
+import ProductCart from "../pages/ProductCart";
+import Login from "../components/layouts/components/Login";
+import BookDetail from "../pages/BookDetail";
+import Profile from "../pages/Profile";
+import Payment from "../pages/Payment";
+import PageNotFound from "../pages/PageNotFound";
+import LayoutPayment from "../components/layouts/LayoutPayment";
+import LayoutLogin from "../components/layouts/LayoutLogin";
+import LayoutRegister from "../components/layouts/LayoutRegister";
+import SearchPage from "../pages/SearchPage";
+import Register from "../components/layouts/components/Register";
+
+// Public Routes
+const publicRoutes = [
+  { path: routesConfig.home, component: HomePage, exact: true },
+  {
+    path: routesConfig.register,
+    component: Register,
+    exact: false,
+    layout: LayoutRegister,
+  },
+  {
+    path: routesConfig.login,
+    component: Login,
+    exact: false,
+    layout: LayoutLogin,
+  },
+  { path: routesConfig.cart, component: ProductCart, exact: false },
+  { path: routesConfig.bookdetails, component: BookDetail, exact: false },
+  { path: routesConfig.profile, component: Profile, exact: false },
+  {
+    path: routesConfig.payment,
+    component: Payment,
+    exact: false,
+    layout: LayoutPayment,
+  },
+  { path: routesConfig.searchResult, component: SearchPage, exact: false },
+  { path: routesConfig.pageNotFound, component: PageNotFound, exact: false },
+];
+
+const privateRoutes = [];
+
+export { publicRoutes, privateRoutes };
