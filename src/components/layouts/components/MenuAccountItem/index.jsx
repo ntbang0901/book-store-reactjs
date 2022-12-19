@@ -1,17 +1,22 @@
 import Tippy from "@tippyjs/react/headless";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Wrapper as PopperWrapper } from "../Popper";
 import * as actions from "../../../../actions";
 import MenuItem from "./MenuItem";
 function MenuAccount({ children }) {
   const history = useHistory();
+  const localtion = useLocation();
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.auth.currentUser);
-
+  console.log(localtion);
   const handleLogout = () => {
-    dispatch(actions.Logout(currentUser));
+    if (localtion.pathname === "/admin") {
+      dispatch(actions.Logout(currentUser, history));
+    } else {
+      dispatch(actions.Logout(currentUser));
+    }
   };
 
   const menuProfileLogin = [
@@ -34,6 +39,12 @@ function MenuAccount({ children }) {
       title: "Tài khoản của tôi",
       icon: "https://icons.veryicon.com/png/o/file-type/linear-icon-2/user-132.png",
       to: "/account/profile",
+    },
+    {
+      title: "Quản lý",
+      icon: "https://icons.veryicon.com/png/o/miscellaneous/yuanql/icon-admin.png",
+      to: "/admin",
+      isAdmin: true,
     },
     {
       title: "Đánh giả sản phẩm",
@@ -71,9 +82,17 @@ function MenuAccount({ children }) {
       render={(attrs) => (
         <div className="menu-account-list" tabIndex="-1" {...attrs}>
           <PopperWrapper>
-            {menu.map((item, index) => (
-              <MenuItem key={item + index} data={item} />
-            ))}
+            {menu.map((item, index) => {
+              if (
+                item.isAdmin &&
+                currentUser &&
+                currentUser?.loaiuserid === 2
+              ) {
+                return;
+              } else {
+                return <MenuItem key={index} data={item} />;
+              }
+            })}
           </PopperWrapper>
         </div>
       )}>

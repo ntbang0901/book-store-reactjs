@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../actions/index";
-import routesConfig from "../../../../config/routes";
+import { routesConfig } from "../../../../config/routes";
 import SearchBox from "../SearchBox";
 import MenuAccount from "../MenuAccountItem";
 import { Wrapper as PopperWrapper } from "../Popper";

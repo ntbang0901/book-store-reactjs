@@ -1,12 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
-import { publicRoutes } from "./index";
+import { publicRoutes, privateRoutes } from "./index";
 import DefaultLayout from "../components/layouts/DefaultLayout";
-import routeConfig from "../config/routes";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function ComponentRoute() {
+  const currentUser = useSelector((state) => state.auth.currentUser);
+
   return (
     <Switch>
       {publicRoutes.map((route, index) => {

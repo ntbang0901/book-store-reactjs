@@ -1,4 +1,4 @@
-import routesConfig from "../config/routes";
+import { routesConfig, adminRoutes } from "../config/routes";
 
 import HomePage from "../pages/HomePage";
 import ProductCart from "../pages/ProductCart";
@@ -12,10 +12,18 @@ import LayoutLogin from "../components/layouts/LayoutLogin";
 import LayoutRegister from "../components/layouts/LayoutRegister";
 import SearchPage from "../pages/SearchPage";
 import Register from "../components/layouts/components/Register";
-
+//admin
+import Home from "../pagesAdmin/Home/Home";
+import DefaultLayoutAdmin from "../pagesAdmin/DefaultLayoutAdmin";
 // Public Routes
-const publicRoutes = [
+export const publicRoutes = [
   { path: routesConfig.home, component: HomePage, exact: true },
+  {
+    path: adminRoutes.home,
+    component: Home,
+    exact: true,
+    layout: DefaultLayoutAdmin,
+  },
   {
     path: routesConfig.register,
     component: Register,
@@ -41,6 +49,4 @@ const publicRoutes = [
   { path: routesConfig.pageNotFound, component: PageNotFound, exact: false },
 ];
 
-const privateRoutes = [];
-
-export { publicRoutes, privateRoutes };
+export const privateRoutes = [];

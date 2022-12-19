@@ -59,12 +59,15 @@ export const loginSuccess = (data) => {
   };
 };
 
-export const Logout = (user) => {
+export const Logout = (user, history) => {
   return async (dispatch, getState) => {
     try {
       if (navigator.onLine) {
         let res = await authLogout(user);
         if (res?.data?.errCode === 0) {
+          if (history) {
+            history.push("/login");
+          }
           dispatch({
             type: actionsTypes.LOGOUT_SUCCESS,
           });

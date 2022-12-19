@@ -1,4 +1,4 @@
-const routes = {
+export const routesConfig = {
   home: "/",
   login: "/login",
   register: "/register",
@@ -12,4 +12,6 @@ const routes = {
   pageNotFound: "*",
 };
 
-export default routes;
+export const adminRoutes = {
+  home: "/admin",
+};

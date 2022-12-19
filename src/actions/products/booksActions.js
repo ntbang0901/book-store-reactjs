@@ -54,7 +54,7 @@ export const fetchProducSearchStart = (value, page, options) => {
   return async (dispatch, getState) => {
     try {
       let res = await getProductsApi(null, value, page, null, options);
-      if (res && res.data.error === 0 && res.data.data.length > 0) {
+      if (res && res.data.error === 0 && res.data.total > 0) {
         dispatch({
           type:
             +res.data.page === 1

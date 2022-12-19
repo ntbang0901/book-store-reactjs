@@ -1,5 +1,5 @@
 import LayoutDefault2 from "../LayoutDefault2";
-import routesConfig from "../../../config/routes";
+import { routesConfig } from "../../../config/routes";
 
 function LayoutPayment({ children }) {
   return (

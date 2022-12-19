@@ -141,6 +141,12 @@ function Countrystatecity({ user, FecthData }) {
                       className="btn btn-save-address ">
                       Lưu
                     </button>
+                    <button
+                      onClick={() => setIsShowForm(false)}
+                      type="button"
+                      className="btn btn-save-address ">
+                      Huỷ
+                    </button>
                   </div>
                 </form>
               </div>

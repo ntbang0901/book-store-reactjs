@@ -17,12 +17,18 @@ function SearchPage() {
     return useMemo(() => new URLSearchParams(search), [search]);
   }
 
+  console.log(resultSearch);
   let query = useQuery();
 
   const value = query.get("q");
 
   useEffect(() => {
-    if (query === null) return;
+    if (value.length > 0 && value) {
+      console.log(value);
+      dispatch(actions.fetchProducSearchStart(value));
+    } else {
+      return;
+    }
     document.title = `Kết quả tìm kiếm với "${value}"`;
   }, []);
 

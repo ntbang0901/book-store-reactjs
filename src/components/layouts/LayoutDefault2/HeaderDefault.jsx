@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import routesConfig from "../../../config/routes";
 
 function HeaderDefault({ title, to }) {
   return (
