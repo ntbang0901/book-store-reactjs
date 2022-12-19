@@ -22,6 +22,7 @@ function Register() {
 
   const [isshowFormVerify, setIsShowFromVerify] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const inputs = [
     {
@@ -132,9 +133,21 @@ function Register() {
     setLoading(true);
     try {
       let res = await createUserService(values);
-      if (res?.data?.code === 200) {
+      if (res?.data?.error === 0) {
         setLoading(false);
         setIsShowFromVerify(true);
+      }
+      if (res.date.code === 1) {
+        setLoading(false);
+        setMessage("username đã tồn tại");
+      }
+      if (res.date.code === 2) {
+        setLoading(false);
+        setMessage("email đã tồn tại");
+      }
+      if (res.date.code === 3) {
+        setLoading(false);
+        setMessage("Số điện thoại đã tồn tại");
       }
     } catch (error) {
       console.log(error);
@@ -206,6 +219,7 @@ function Register() {
         <FormVerfifyOPT user={values} initialMinute={2} />
       ) : (
         <div className="register-form">
+          <span className="text-danger">{message}</span>
           <form onSubmit={handleSubmit}>
             {inputs.map((input) => (
               <FormInput
