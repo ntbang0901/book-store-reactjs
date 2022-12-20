@@ -23,7 +23,7 @@ function SearchPage() {
   const value = query.get("q");
 
   useEffect(() => {
-    if (value.length > 0 && value) {
+    if (value) {
       console.log(value);
       dispatch(actions.fetchProducSearchStart(value));
     } else {

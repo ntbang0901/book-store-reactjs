@@ -131,6 +131,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (values.username === values.password) {
+      setLoading(false);
+      setMessage("Tài khoản và mật khẩu phải khác nhau");
+      return;
+    }
     try {
       let res = await createUserService(values);
       if (res?.data?.error === 0) {
@@ -149,12 +155,19 @@ function Register() {
         setLoading(false);
         setMessage("Số điện thoại đã tồn tại");
       }
+      if (res.data.error === 4) {
+        setLoading(false);
+        setMessage("Tài khoản và mật khẩu phải khác nhau");
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   const onChange = (e) => {
+    if (values.username === values.password) {
+      setMessage("Tài khoản và mật khẩu phải khác nhau");
+    }
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
@@ -207,6 +220,7 @@ function Register() {
     if (password !== confirmPassword) {
       return true;
     }
+
     return false;
   };
 

@@ -64,6 +64,9 @@ function Login() {
       if (message === "Login faild") {
         return "Tài khoản hoặc mật khẩu không chính xác";
       }
+      if (message === "user is locked!") {
+        return "Tài khoản bị khoá 5 phút do đăng nhập sai quá nhiều lần";
+      }
       if (message === "user is not verified!") {
         setIsverify(true);
       }
@@ -87,7 +90,8 @@ function Login() {
         <FormVerfifyOPT user={user} goBack={goBack} />
       ) : (
         <form action="">
-          <div style={{ height: "20px" }}>
+          <h3>Đăng nhập</h3>
+          <div style={{ height: "20px", marginBottom: "10px" }}>
             {error ? (
               <h4 className="text-danger">
                 {message !== null
@@ -98,7 +102,6 @@ function Login() {
               ""
             )}
           </div>
-          <h3>Đăng nhập</h3>
           <span>Tài khoản</span>
           <input
             type="text"
@@ -109,6 +112,7 @@ function Login() {
             placeholder="tài khoản"
           />
           <span>Mật khẩu</span>
+
           <input
             type="password"
             name="pwd"
