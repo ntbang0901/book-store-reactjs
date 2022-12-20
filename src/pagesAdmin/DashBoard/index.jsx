@@ -13,15 +13,22 @@ const Dashboard = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const history = useHistory();
 
+  const role =
+    currentUser && currentUser.user_roles.length > 0
+      ? currentUser.user_roles[currentUser.user_roles.length - 1].roles.name
+      : "USER";
+  console.log(role);
   const getData = async () => {
-    try {
-      let res = await getAllUser();
-      if (res.data.error === 0) {
-        setUsers(res.data.data);
-        setTotalUser(res.data.total);
-        setLoading(false);
-      }
-    } catch (error) {}
+    if (role === "ADMIN") {
+      try {
+        let res = await getAllUser();
+        if (res.data.error === 0) {
+          setUsers(res.data.data);
+          setTotalUser(res.data.total);
+          setLoading(false);
+        }
+      } catch (error) {}
+    }
   };
 
   useEffect(() => {
@@ -31,8 +38,6 @@ const Dashboard = () => {
     setLoading(true);
     getData();
   }, []);
-
-  console.log(users);
 
   return (
     <div className="col main pt-5 mt-3">
@@ -139,44 +144,48 @@ const Dashboard = () => {
         </div> */}
 
       <div className="row ">
-        <div className="col-lg-7 col-md-6 col-sm-12">
-          <h5 className="mt-3 mb-3 text-secondary">
-            Check More Records of Employees
-          </h5>
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead className="thead-light">
-                <tr>
-                  <th>No</th>
-                  <th>ID</th>
-                  <th>HỌ TÊN</th>
-                  <th>USERNAME</th>
-                  <th>EMAIL</th>
-                  <th>PHONE</th>
-                  <th>ROLE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.slice(0, 10).map((output, index) => (
-                  <tr key={output.id}>
-                    <td>{index + 1}</td>
-                    <td>{output.id}</td>
-                    <td>{output.ho + " " + output.ten}</td>
-                    <td>{output.username}</td>
-                    <td>{output.email}</td>
-                    <td>{output.sdt}</td>
-                    <td>
-                      {output.user_roles.length > 0
-                        ? output.user_roles[output.user_roles.length - 1].roles
-                            .name
-                        : "USER"}
-                    </td>
+        {role === "ADMIN" ? (
+          <div className="col-lg-7 col-md-6 col-sm-12">
+            <h5 className="mt-3 mb-3 text-secondary">
+              Check More Records of Employees
+            </h5>
+            <div className="table-responsive">
+              <table className="table table-striped">
+                <thead className="thead-light">
+                  <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>HỌ TÊN</th>
+                    <th>USERNAME</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
+                    <th>ROLE</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {users.slice(0, 10).map((output, index) => (
+                    <tr key={output.id}>
+                      <td>{index + 1}</td>
+                      <td>{output.id}</td>
+                      <td>{output.ho + " " + output.ten}</td>
+                      <td>{output.username}</td>
+                      <td>{output.email}</td>
+                      <td>{output.sdt}</td>
+                      <td>
+                        {output.user_roles.length > 0
+                          ? output.user_roles[output.user_roles.length - 1]
+                              .roles.name
+                          : "USER"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
         <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
           <h4 className="title mt-3 mb-3 text-center text-secondary">
             Data in Chart
