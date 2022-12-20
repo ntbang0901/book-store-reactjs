@@ -4,6 +4,10 @@ export const getUserByUsername = () => {
   return instance.get(`user/info`);
 };
 
+export const getAllUser = () => {
+  return instance.get(`user/getall`);
+};
+
 export const createUserService = (user) => {
   return publicApi.post(`user/newuser`, { user });
 };

@@ -48,7 +48,6 @@ export const productReducer = (state = initialState, action) => {
       };
 
     case actionsTypes.UPDATE_RESULTSEARCH_SUCCESS:
-      console.log(action.data);
       return {
         ...state,
         resultSearch: {

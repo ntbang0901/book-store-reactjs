@@ -14,8 +14,6 @@ const setup = (store) => {
       }
       const token = await instance.getLocalAccessToken();
       config.headers["X-Token"] = token;
-      console.log("token::", token);
-      console.log("truoc khi request xuong server");
       return config;
     },
     (err) => {
@@ -37,12 +35,9 @@ const setup = (store) => {
         return response;
       }
 
-      console.log("sau khi server response");
-      console.log(response);
       const { code, message } = response.data;
       if (code && code === 401) {
         if (message && message === "jwt expired") {
-          console.log("truong hop token het han:::", message);
           const refreshToken = await instance.getLocalRefreshToken();
           const {
             data: { data },
@@ -61,10 +56,9 @@ const setup = (store) => {
       return response;
     },
     (err) => {
-      alert("Phiên đăng nhập hết hạn");
-
       const user = getState().auth.currentUser;
       if (user) {
+        alert("Phiên đăng nhập hết hạn");
         dispatch(actions.Logout(user));
       }
       return Promise.reject(err);

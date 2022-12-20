@@ -17,12 +17,13 @@ import ForgotPassword from "../pages/ForgotPassword";
 import Home from "../pagesAdmin/Home/Home";
 import DefaultLayoutAdmin from "../pagesAdmin/DefaultLayoutAdmin";
 import LuuY from "../pages/LuuY";
+import HomePageAdmin from "../pagesAdmin";
 // Public Routes
 export const publicRoutes = [
   { path: routesConfig.home, component: HomePage, exact: true },
   {
     path: adminRoutes.home,
-    component: Home,
+    component: HomePageAdmin,
     exact: true,
     layout: DefaultLayoutAdmin,
     isAdmin: true,

@@ -59,7 +59,6 @@ function Login() {
   };
 
   const errMessage = () => {
-    console.log(message == "Login faild");
     if (message) {
       if (message === "Login faild") {
         return "Tài khoản hoặc mật khẩu không chính xác";

@@ -17,14 +17,12 @@ function SearchPage() {
     return useMemo(() => new URLSearchParams(search), [search]);
   }
 
-  console.log(resultSearch);
   let query = useQuery();
 
   const value = query.get("q");
 
   useEffect(() => {
     if (value) {
-      console.log(value);
       dispatch(actions.fetchProducSearchStart(value));
     } else {
       return;
