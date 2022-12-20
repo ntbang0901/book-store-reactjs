@@ -6,6 +6,8 @@ export const routesConfig = {
   cart: "/cart",
   search: "/search",
   profile: "/account",
+  fogotpassword: "/fogotpassword",
+  luuy: "/luuy",
   payment: "/payment",
   searchResult: "/search",
   bubblegum: "/account/bubblegum",

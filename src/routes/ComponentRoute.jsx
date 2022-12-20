@@ -18,13 +18,18 @@ function ComponentRoute() {
         } else if (route.layout === null) {
           Layout = Fragment;
         }
-        return (
-          <Route key={index} path={route.path} exact={route.exact}>
-            <Layout>
-              <Page />
-            </Layout>
-          </Route>
-        );
+
+        if (route.isAdmin && currentUser && currentUser.loaiuserid === 2) {
+          return;
+        } else {
+          return (
+            <Route key={index} path={route.path} exact={route.exact}>
+              <Layout>
+                <Page />
+              </Layout>
+            </Route>
+          );
+        }
       })}
     </Switch>
   );

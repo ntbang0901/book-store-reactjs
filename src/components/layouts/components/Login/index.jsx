@@ -127,7 +127,7 @@ function Login() {
             {isFetching ? <Spinner animation="border" /> : "Đăng nhập"}
           </button>
           <p>
-            <a href="#">Quên mật khẩu</a>
+            <Link to="/fogotpassword">Quên mật khẩu</Link>
           </p>
           <p>
             <Link to="/register">Tạo tài khoản</Link>

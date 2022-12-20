@@ -1,16 +1,11 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../../actions/index";
 import { routesConfig } from "../../../../config/routes";
-import SearchBox from "../SearchBox";
 import MenuAccount from "../MenuAccountItem";
-import { Wrapper as PopperWrapper } from "../Popper";
-
-import Tippy from "@tippyjs/react/headless";
+import SearchBox from "../SearchBox";
 
 import "./Header.scss";
-import Menu from "../Menu";
 
 function Header({ handleShowFormLogin }) {
   const numberCart = useSelector((state) => state.carts.numberCart);

@@ -18,3 +18,14 @@ export const verifyOTP = (email, otp) => {
 export const updateUser = (data) => {
   return instance.post(`user/updateinfo`, { data: data });
 };
+
+export const sendOtpFogot = (data) => {
+  return publicApi.post(`user/optfogotpass`, { data: data });
+};
+
+export const verifyOTPFogot = (email, otp) => {
+  return publicApi.post(`user/verifyotpfogotpass`, { email, otp });
+};
+export const updatePassFogot = (data) => {
+  return publicApi.post(`user/updatepasss`, { data: data });
+};

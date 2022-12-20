@@ -30,6 +30,7 @@ function MenuAccount({ children }) {
       icon: "https://icons.veryicon.com/png/o/business/purchase-sale-and-inventory-management/return-management-of-online-shopping.png",
       to: "/",
     },
+
     {
       title: "Thông báo của tôi",
       icon: "https://icons.veryicon.com/png/o/internet--web/truckhome/notification-3.png",
@@ -52,6 +53,11 @@ function MenuAccount({ children }) {
       to: "/",
     },
     {
+      title: "Lưu ý",
+      icon: "https://media.istockphoto.com/id/912742254/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-gi%E1%BA%A5y-v%C3%A0-b%C3%BAt.jpg?s=612x612&w=is&k=20&c=PBHK26J0MB-lTIiWA5kCrouCbgrQt6W24DDIF6tXvD8=",
+      to: "/luuy",
+    },
+    {
       title: "Đăng xuất",
       icon: "https://icons.veryicon.com/png/o/commerce-shopping/online-retailers/logout-15.png",
       onClick: () => handleLogout(),
@@ -68,6 +74,11 @@ function MenuAccount({ children }) {
       title: "Đăng ký",
       icon: "image/register-svgrepo-com.svg",
       to: "/register",
+    },
+    {
+      title: "Lưu ý",
+      icon: "https://media.istockphoto.com/id/912742254/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-gi%E1%BA%A5y-v%C3%A0-b%C3%BAt.jpg?s=612x612&w=is&k=20&c=PBHK26J0MB-lTIiWA5kCrouCbgrQt6W24DDIF6tXvD8=",
+      to: "/luuy",
     },
   ];
 

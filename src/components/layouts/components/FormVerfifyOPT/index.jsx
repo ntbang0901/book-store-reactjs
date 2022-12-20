@@ -3,10 +3,17 @@ import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as actions from "../../../../actions";
-import { createOtp, verifyOTP } from "../../../../services/userService";
+import {
+  createOtp,
+  verifyOTP,
+  verifyOTPFogot,
+} from "../../../../services/userService";
 import "./FormVerfifyOPT.scss";
 
 function FormVerfifyOPT({
+  type,
+  setIsVerified,
+  setIsShowFromVerify,
   goBack,
   user,
   initialMinute = 0,
@@ -47,21 +54,34 @@ function FormVerfifyOPT({
     if (value.length <= 6) setText(value);
   };
 
+  console.log(type === "fogot");
+
   const handleVerifyOTP = async () => {
-    try {
-      let res = await verifyOTP(user.email, text);
-      if (res.data.code === 200) {
-        await dispatch(
-          actions.LoginStart(
-            { username: user.username, pwd: user.password },
-            history
-          )
-        );
-      } else {
-        setMessageOTP(res.data.message);
+    if (type === "fogot") {
+      console.log(123);
+      try {
+        let verifyOTP = await verifyOTPFogot(user.email, text);
+        if (verifyOTP.data.code === 200) {
+          setIsShowFromVerify(false);
+          setIsVerified(true);
+        }
+      } catch (error) {}
+    } else {
+      try {
+        let res = await verifyOTP(user.email, text);
+        if (res.data.code === 200) {
+          await dispatch(
+            actions.LoginStart(
+              { username: user.username, pwd: user.password },
+              history
+            )
+          );
+        } else {
+          setMessageOTP(res.data.message);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -70,6 +90,7 @@ function FormVerfifyOPT({
       setLoading(true);
       let res = await createOtp(user.email);
       if (res.data.message === "ok") {
+        setSeconds(0);
         setMinutes(2);
         setLoading(false);
       }
