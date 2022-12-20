@@ -4,23 +4,19 @@ import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import FormVerfifyOPT from "../../components/layouts/components/FormVerfifyOPT";
 import FormInput from "../../components/FormInput";
-import { sendOtpFogot, updatePassFogot } from "../../services/userService";
+import { fogotPassword } from "../../services/userService";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 function ForgotPassword({}) {
   const [values, setValues] = useState({
     email: "",
-    password: "",
-    confirmPassword: "",
   });
   const history = useHistory();
   const [isshowFormVerify, setIsShowFromVerify] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [isVerified, setIsVerified] = useState(false);
-
-  useEffect(() => {}, [isVerified]);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const inputs = [
     {
@@ -31,31 +27,6 @@ function ForgotPassword({}) {
       errorMessage: "It should be a valid email diachi!",
       label: "Email",
       pattern: `^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$`,
-      IsverifiedOTP: false,
-      required: true,
-    },
-
-    {
-      id: 4,
-      name: "password",
-      type: "password",
-      placeholder: "Password",
-      errorMessage:
-        "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
-      label: "Password",
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-      required: true,
-      IsverifiedOTP: true,
-    },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      errorMessage: "Passwords don't match!",
-      label: "Confirm Password",
-      pattern: values.password,
-      IsverifiedOTP: true,
       required: true,
     },
   ];
@@ -63,27 +34,16 @@ function ForgotPassword({}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (isVerified === false) {
-      let sendOtp = await sendOtpFogot(values);
-      if (sendOtp.data.error === 0) {
-        setIsShowFromVerify(true);
+    try {
+      let res = await fogotPassword(values.email);
+      if (res.data.error === 0) {
         setLoading(false);
+        setIsSuccess(true);
+        setTimeout(() => {
+          history.push("/login");
+        }, 2000);
       }
-      try {
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      let update = await updatePassFogot({
-        email: values.email,
-        password: values.password,
-      });
-      console.log(update);
-      if (update.data.code === 200) {
-        setLoading(false);
-        history.push("/login");
-      }
-    }
+    } catch (error) {}
   };
 
   const onChange = (e) => {
@@ -91,39 +51,19 @@ function ForgotPassword({}) {
   };
 
   const checkValue = () => {
-    const {
-      email,
-
-      password,
-      confirmPassword,
-    } = values;
-
-    const regexPass =
-      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-
+    const { email } = values;
     const regexEmail =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (isVerified === false) {
-      if (email === "") {
-        return true;
-      }
-      if (!email.match(regexEmail)) {
-        return true;
-      }
-    } else {
-      if (!password.match(regexPass)) {
-        return true;
-      }
-      if (password !== confirmPassword) {
-        return true;
-      }
+    if (email === "") {
+      return true;
+    }
+    if (!email.match(regexEmail)) {
+      return true;
     }
 
     return false;
   };
-
-  console.log(isVerified, isshowFormVerify);
 
   return (
     <div className="register-page">
@@ -131,46 +71,30 @@ function ForgotPassword({}) {
         <RegisterForm />
       </div> */}
 
-      {isshowFormVerify ? (
-        <FormVerfifyOPT
-          setIsVerified={setIsVerified}
-          setIsShowFromVerify={setIsShowFromVerify}
-          type="fogot"
-          user={values}
-          initialMinute={2}
-        />
+      {isSuccess === true ? (
+        <div className="success">
+          <img
+            width={"50px"}
+            src="http://taxiadvertisingvn.com/wp-content/uploads/2020/02/icon-tick.png"
+          />
+          <span style={{ fontSize: "16px" }}>
+            Gửi thành công vui lòng kiểm tra mail của bạn
+          </span>
+        </div>
       ) : (
         <div>
           <span className="message-error">{message}</span>
 
           <div className="register-form">
             <form onSubmit={handleSubmit}>
-              {inputs.map((input) => {
-                if (input.IsverifiedOTP === false) {
-                  if (isVerified === false) {
-                    return (
-                      <FormInput
-                        key={input.id + input.name}
-                        {...input}
-                        value={values[input.name]}
-                        onChange={onChange}
-                      />
-                    );
-                  } else {
-                    return;
-                  }
-                }
-                if (input.IsverifiedOTP === true && isVerified === true) {
-                  return (
-                    <FormInput
-                      key={input.id + input.name}
-                      {...input}
-                      value={values[input.name]}
-                      onChange={onChange}
-                    />
-                  );
-                }
-              })}
+              {inputs.map((input) => (
+                <FormInput
+                  key={input.id + input.name}
+                  {...input}
+                  value={values[input.name]}
+                  onChange={onChange}
+                />
+              ))}
 
               <button
                 className={"btn-register " + (checkValue() ? "disabled" : "")}

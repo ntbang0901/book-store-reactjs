@@ -15,6 +15,7 @@ function Payment() {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showMessageSuccess, setshowMessageSuccess] = useState(false);
 
   const FecthDataUser = async () => {
     try {
@@ -189,7 +190,11 @@ function Payment() {
                       </a>
                     </div>
                   </div>
-                  <button className="btn-checkout">Thanh toán</button>
+                  <button
+                    onClick={() => handleCheckout()}
+                    className="btn-checkout">
+                    Thanh toán
+                  </button>
                 </div>
               </div>
             </>

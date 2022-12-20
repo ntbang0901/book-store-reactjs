@@ -44,7 +44,7 @@ function Header({ handleShowFormLogin }) {
 
   const getFullname = () => {
     if (currentUser) {
-      return currentUser.ho + " " + currentUser.ten;
+      return currentUser.ten;
     }
   };
 
