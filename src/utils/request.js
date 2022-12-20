@@ -7,13 +7,13 @@ export const request = axios.create({
 });
 
 export const instance = axios.create({
-  baseURL: "http://localhost:3002/",
+  baseURL: "http://192.168.128.143:2913/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 export const publicApi = axios.create({
-  baseURL: "http://localhost:3002/",
+  baseURL: "http://192.168.128.143:2913/",
   headers: {
     "Content-Type": "application/json",
   },
