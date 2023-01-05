@@ -61,6 +61,8 @@ function FormVerfifyOPT({
         setMessageOTP(res.data.message);
       }
     } catch (error) {
+      setLoading(false);
+
       console.log(error);
     }
   };
@@ -71,9 +73,12 @@ function FormVerfifyOPT({
       let res = await createOtp(user.email);
       if (res.data.message === "ok") {
         setMinutes(2);
+        setSeconds(0);
         setLoading(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
@@ -119,6 +124,13 @@ function FormVerfifyOPT({
               onClick={(e) => handleVerifyOTP(e)}>
               Gửi
             </button>
+          </div>
+        </div>
+        <div className="form-group row form-input-otp">
+          <label
+            htmlFor="inputPassword"
+            className="col-sm-3 col-form-label title-form"></label>
+          <div className="col-sm-9 input-form">
             <div>
               <div className="count-down">
                 <h2>

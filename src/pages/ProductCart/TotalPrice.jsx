@@ -38,7 +38,7 @@ function TotalPrice() {
         <div className="total-cart-page ">
           <div className="title-cart-page-left">Thành tiền</div>
           <div className="number-cart-page-right">
-            <span className="price">{totalPrice(itemSelected)} $</span>
+            <span className="price">{totalPrice(itemSelected)} Đ</span>
           </div>
         </div>
         <div className="border-product"></div>
