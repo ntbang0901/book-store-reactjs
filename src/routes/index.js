@@ -21,13 +21,7 @@ import HomePageAdmin from "../pagesAdmin";
 // Public Routes
 export const publicRoutes = [
   { path: routesConfig.home, component: HomePage, exact: true },
-  {
-    path: adminRoutes.home,
-    component: HomePageAdmin,
-    exact: true,
-    layout: DefaultLayoutAdmin,
-    isAdmin: true,
-  },
+
   {
     path: routesConfig.register,
     component: Register,
@@ -60,4 +54,12 @@ export const publicRoutes = [
   { path: routesConfig.pageNotFound, component: PageNotFound, exact: false },
 ];
 
-export const privateRoutes = [];
+export const privateAdminRoutes = [
+  {
+    path: adminRoutes.home,
+    component: HomePageAdmin,
+    exact: true,
+    layout: DefaultLayoutAdmin,
+    isAdmin: true,
+  },
+];

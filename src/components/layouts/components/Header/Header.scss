@@ -1,17 +1,63 @@
+
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+@mixin mobile {
+  @media (max-width: #{$mobile -width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
 .menu-account-list {
   min-width: 50%;
   font-size: 14px;
 }
 
 .header-1 {
-  position: relative;
   transition: all 0.5s ease;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  display: flex;
+  align-items: center;
   z-index: 999;
+
+  .navbar-left{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    @media (max-width: 900px) {
+      gap: 12px;
+    }
+
+    @media (max-width: 576px) {
+      gap: 6px;
+    }
+
+    .name{
+      @media (max-width: 576px) {
+          display: none;
+        }
+      cursor: pointer;
+      color: #000;
+      font-size: 20px;
+    }
+  }
 }
+
 
 .header {
   &.active {

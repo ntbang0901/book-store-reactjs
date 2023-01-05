@@ -16,7 +16,7 @@ function MenuAccountItem({ data }) {
           ) : (
             ""
           )}
-          <span>{data.title}</span>
+          <span className="menu-item__title">{data.title}</span>
         </Link>
       ) : (
         <div className="menu-item" onClick={data.onClick}>
@@ -26,7 +26,7 @@ function MenuAccountItem({ data }) {
             src={data?.icon}
             alt={data.title}
           />
-          <span>{data.title}</span>
+          <span className="menu-item__title">{data.title}</span>
         </div>
       )}
     </>

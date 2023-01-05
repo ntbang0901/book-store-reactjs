@@ -71,9 +71,11 @@ function Payment() {
 
   const handleCheckout = () => {
     setIsSpinner(true);
+    setshowSuccess(true);
+
     setTimeout(() => {
       setIsSpinner(false);
-      setshowSuccess(true);
+      setshowSuccess(false);
       history.push("/");
     }, 2000);
   };
